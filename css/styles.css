@@ -401,3 +401,27 @@ body {
 .product-page .hero-text {
   max-width: 520px;
 }
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-social img {
+  width: 28px;
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
