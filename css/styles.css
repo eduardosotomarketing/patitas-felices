@@ -13,10 +13,18 @@
   font-family: 'Nunito', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
+}
+
+body {
+  padding-top: 72px;
 }
 
 .container {
@@ -27,9 +35,16 @@ body {
 
 /* HEADER */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: var(--white);
+  z-index: 1000;
   border-bottom: 1px solid #eee;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
+
 
 .header-content {
   display: flex;
@@ -90,6 +105,7 @@ body {
 /* SECCIONES */
 .section {
   padding: 80px 0;
+  scroll-margin-top: 90px;
 }
 
 .bg-light {
@@ -199,4 +215,189 @@ body {
   .hero h1 {
     font-size: 34px;
   }
+}
+
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 72px;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    width: 100%;
+    padding: 24px;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .nav-open {
+    display: flex !important;
+  }
+}
+
+
+/* HEADER ANIMACIONES */
+.header {
+  transition: all 0.3s ease;
+}
+
+.logo {
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+}
+
+/* LINKS NAV */
+.nav a {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* MICROANIMACIONES CARDS */
+.card,
+.product-card,
+.benefit-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover,
+.product-card:hover,
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* IMAGEN PRODUCTOS */
+.product-card img {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.btn-primary,
+.btn-secondary {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* SCROLL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: var(--delay, 0s);
+}
+
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variantes */
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal-left.active,
+.reveal-right.active {
+  transform: translateX(0);
+}
+
+
+/* HERO MOBILE FIX */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 0;
+  }
+
+  .hero-grid {
+    display: flex;
+    flex-direction: column-reverse; /* imagen arriba */
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero-text {
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  /* Anulamos animaciones laterales en mobile */
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(40px);
+  }
+
+  .reveal-left.active,
+  .reveal-right.active {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero .reveal {
+    transition-duration: 0.6s;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* PRODUCT PAGE FIX DESKTOP */
+.product-page .hero-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.product-page .hero-image img {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.product-page .hero-text {
+  max-width: 520px;
 }
