@@ -405,14 +405,18 @@ body {
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 48px;
   align-items: center;
   text-align: center;
 }
 
 .footer-social {
-  display: flex;
+ display: flex;
+  justify-content: center;  /* centra los íconos */
+  align-items: center;
   gap: 16px;
+  width: 100%;
+  margin-top: 16px;
 }
 
 .footer-social img {
@@ -424,4 +428,19 @@ body {
 .footer-social img:hover {
   transform: scale(1.1);
   opacity: 1;
+}
+
+.footer-cta-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer .btn-primary {
+  background: var(--accent);
+}
+
+.footer .btn-primary:hover {
+  background: #e6951c;
 }
